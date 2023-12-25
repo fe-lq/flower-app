@@ -48,6 +48,7 @@
     "@dcloudio/uni-mp-toutiao": "3.0.0-alpha-3060720221018006",
     "@dcloudio/uni-mp-weixin": "3.0.0-alpha-3060720221018006",
     "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3060720221018006",
+    "sass": "^1.69.5",
     "vue": "^3.2.41",
     "vue-i18n": "^9.1.9"
   },
@@ -57,6 +58,7 @@
     "@dcloudio/uni-cli-shared": "3.0.0-alpha-3060720221018006",
     "@dcloudio/uni-stacktracey": "3.0.0-alpha-3060720221018006",
     "@dcloudio/vite-plugin-uni": "3.0.0-alpha-3060720221018006",
+    "@types/node": "^20.10.5",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "eslint": "^8.27.0",
@@ -70,7 +72,9 @@
   },
   "pnpm": {
     "peerDependencyRules": {
-      "allowAny": ["postcss"]
+      "allowAny": [
+        "postcss"
+      ]
     }
   }
 }

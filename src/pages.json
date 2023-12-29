@@ -3,31 +3,30 @@
     {
       "path": "pages/home/Index",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "首页"
       }
     },
     {
       "path": "pages/category/Index",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "分类"
       }
     },
     {
       "path": "pages/cart/Index",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "购物车"
       }
     },
     {
       "path": "pages/mine/Index",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "我的"
       }
     }
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },

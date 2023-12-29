@@ -2,16 +2,19 @@
 import { onLaunch, onShow, onHide, onLoad } from '@dcloudio/uni-app';
 import { ref, onMounted } from 'vue';
 import Card from '@/components/Card.vue';
-const title = ref('Hello');
 onLoad(() => {
-  const page = getCurrentPages();
-  const pageItem = page[page.length - 1];
-  console.log(pageItem);
-  console.log('App Launch');
+  console.log('App onLoad');
 });
 </script>
 
 <template>
+  <page-meta page-style="color: green" root-font-size="16px">
+    <navigation-bar
+      title="首页"
+      :color-animation-duration="2000"
+      color-animation-timing-func="easeIn"
+    />
+  </page-meta>
   <view class="home">
     <Card>
       <swiper

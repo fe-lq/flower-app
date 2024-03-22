@@ -1,34 +1,27 @@
 {
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
+  },
   "pages": [
     {
-      "path": "pages/home/Index",
-      "style": {
-        "navigationBarTitleText": "首页"
-      }
+      "path": "pages/home/Index"
     },
     {
-      "path": "pages/category/Index",
-      "style": {
-        "navigationBarTitleText": "分类"
-      }
+      "path": "pages/category/Index"
     },
     {
-      "path": "pages/cart/Index",
-      "style": {
-        "navigationBarTitleText": "购物车"
-      }
+      "path": "pages/cart/Index"
     },
     {
-      "path": "pages/mine/Index",
-      "style": {
-        "navigationBarTitleText": "我的"
-      }
+      "path": "pages/mine/Index"
     }
   ],
   "globalStyle": {
-    "navigationBarTextStyle": "black",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationStyle": "custom",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#7A7E83",
@@ -38,26 +31,26 @@
     "list": [
       {
         "pagePath": "pages/home/Index",
-        "iconPath": "static/images/home.png",
-        "selectedIconPath": "static/images/home_active.png",
+        "iconPath": "static/images/tabbars/home.png",
+        "selectedIconPath": "static/images/tabbars/home_active.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/category/Index",
-        "iconPath": "static/images/grid.png",
-        "selectedIconPath": "static/images/grid_active.png",
+        "iconPath": "static/images/tabbars/grid.png",
+        "selectedIconPath": "static/images/tabbars/grid_active.png",
         "text": "分类"
       },
       {
         "pagePath": "pages/cart/Index",
-        "iconPath": "static/images/cart.png",
-        "selectedIconPath": "static/images/cart_active.png",
+        "iconPath": "static/images/tabbars/cart.png",
+        "selectedIconPath": "static/images/tabbars/cart_active.png",
         "text": "购物车"
       },
       {
         "pagePath": "pages/mine/Index",
-        "iconPath": "static/images/user.png",
-        "selectedIconPath": "static/images/user_active.png",
+        "iconPath": "static/images/tabbars/user.png",
+        "selectedIconPath": "static/images/tabbars/user_active.png",
         "text": "个人中心"
       }
     ]

@@ -8,10 +8,9 @@
 
 <style scoped lang="scss">
 .card {
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  padding: 20px;
+  border-radius: 10rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
+  padding: 20rpx;
   background-color: #fff;
-  width: 100%;
 }
 </style>

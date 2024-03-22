@@ -3,7 +3,12 @@
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "jsxImportSource": "vue",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -11,8 +16,9 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "types": ["@dcloudio/types"],
-    "baseUrl": "."
+    "baseUrl": "./"
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "types": ["vite/client"]
+  "exclude": ["node_modules"],
+  "types": ["vite/client", "@dcloudio/uni-ui"]
 }

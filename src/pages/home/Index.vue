@@ -1,46 +1,68 @@
 <script setup lang="ts">
-import { onLaunch, onShow, onHide, onLoad } from '@dcloudio/uni-app';
-import { ref, onMounted } from 'vue';
+import { onLoad, onShareAppMessage, onShareTimeline } from '@dcloudio/uni-app';
+import spring from '@/static/images/banner/spring.png';
+import summer from '@/static/images/banner/summer.png';
+import autumn from '@/static/images/banner/autumn.png';
+import winter from '@/static/images/banner/winter.png';
+import { getGoods } from '@/api/goods';
+// import { ref } from 'vue';
+import NavBar from '@/components/NavBar.vue';
 import Card from '@/components/Card.vue';
+
+const fetchBanners = async () => {
+  try {
+    const res = await getGoods(1);
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 onLoad(() => {
-  console.log('App onLoad');
+  fetchBanners();
 });
+
+onShareAppMessage(() => ({}));
+onShareTimeline(() => ({}));
+
+const banners = [spring, summer, autumn, winter];
 </script>
 
 <template>
-  <page-meta page-style="color: green" root-font-size="16px">
-    <navigation-bar
-      title="首页"
-      :color-animation-duration="2000"
-      color-animation-timing-func="easeIn"
-    />
-  </page-meta>
-  <view class="home">
-    <Card>
-      <swiper
-        class="swiper"
-        circular
-        indicator-dots
-        autoplay
-        :interval="3000"
-        :duration="500"
+  <NavBar> 花事花艺 </NavBar>
+
+  <view class="home-bg" />
+  <view class="container">
+    <swiper
+      class="swiper"
+      circular
+      autoplay
+      indicator-dots
+      :interval="3000"
+      :duration="500"
+    >
+      <swiper-item
+        v-for="(item, index) in banners"
+        :key="index"
+        class="swiper-item"
       >
-        <swiper-item>
-          <view class="swiper-item">A</view>
-        </swiper-item>
-        <swiper-item>
-          <view class="swiper-item">B</view>
-        </swiper-item>
-        <swiper-item>
-          <view class="swiper-item">C</view>
-        </swiper-item>
-      </swiper>
+        <image :src="item" style="width: 100%" />
+      </swiper-item>
+    </swiper>
+    <Card>
+      <view><navigator>导航</navigator> </view>
     </Card>
   </view>
 </template>
 
 <style lang="scss" scoped>
-.home {
-  padding: 0 1rem;
+.home-bg {
+  height: 200rpx;
+  position: absolute;
+  width: 100%;
+  background: linear-gradient(#f3514f 70%, #fff);
+}
+.swiper-item {
+  border-radius: 18rpx;
 }
 </style>

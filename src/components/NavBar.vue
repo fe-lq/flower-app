@@ -9,9 +9,23 @@ export default {
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
 import { useStore } from '@/store';
+import { toRefs, defineProps } from 'vue';
 
+interface Props {
+  /** 导航栏的标题 */
+  title?: string;
+  /** 是否显示返回按钮 */
+  enableBack?: boolean;
+}
+
+const props = defineProps<Props>();
+const { title, enableBack } = toRefs(props);
 const store = useStore();
 const { navBarHeight } = storeToRefs(store);
+
+const handleBack = () => {
+  uni.navigateBack({ delta: 1 });
+};
 </script>
 <template>
   <view
@@ -19,10 +33,18 @@ const { navBarHeight } = storeToRefs(store);
     class="header-nav"
   >
     <view class="nav-bar-content">
-      <slot name="custom" />
-      <view class="title">
-        <slot />
+      <view v-if="!!title" class="title">
+        <uni-icons
+          v-if="enableBack"
+          size="20"
+          color="#fff"
+          class="back-icon"
+          type="back"
+          @click="handleBack"
+        />
+        <text> {{ title }}</text>
       </view>
+      <slot />
     </view>
   </view>
 </template>
@@ -47,6 +69,12 @@ const { navBarHeight } = storeToRefs(store);
       display: flex;
       justify-content: center;
       align-items: center;
+
+      .back-icon {
+        left: 0;
+        position: absolute;
+        padding-left: 10rpx;
+      }
     }
   }
 }

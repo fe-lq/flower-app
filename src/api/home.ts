@@ -1,5 +1,6 @@
 import { httpGet } from '@/http';
-import { Banner, Category, Advertisement, Goods } from '@/types/home';
+import { Banner, Category, Advertisement } from '@/types/home';
+import {Goods} from '@/types/goods'
 
 export const getBanners = httpGet<Banner[]>('/index/findBanner');
 export const getCategories = httpGet<Category[]>('/index/findCategory1');

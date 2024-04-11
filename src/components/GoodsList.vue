@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Goods } from '@/types/home';
+import { Goods } from '@/types/goods';
 import GoodsCard from './GoodsCard.vue';
-import { defineProps } from 'vue';
+import { defineProps, toRefs } from 'vue';
 
 interface Props {
   data: Goods[];
@@ -9,14 +9,13 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-
-console.log(props.data);
+const { data, title } = toRefs(props);
 </script>
 
 <template>
-  <view v-if="!!title" class="goods-title">{{ props.title }}</view>
+  <view v-if="!!title" class="goods-title">{{ title }}</view>
   <view class="goods-list">
-    <view v-for="item in props.data" :key="item.id" class="goods-item">
+    <view v-for="item in data" :key="item.id" class="goods-item">
       <GoodsCard :goods="item" />
     </view>
   </view>

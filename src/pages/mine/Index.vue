@@ -43,16 +43,15 @@ const defaultPanels = [
         </view>
       </view>
       <view class="order-content">
-        <view
+        <navigator
           v-for="(item, index) in defaultPanels"
           :key="index"
+          :url="item.url"
           class="order-item"
         >
-          <navigator :url="item.url">
-            <view :class="['iconfont', item.icon]" />
-            <text>{{ item.title }}</text>
-          </navigator>
-        </view>
+          <view :class="['iconfont', item.icon]" />
+          <text>{{ item.title }}</text>
+        </navigator>
       </view>
     </view>
 
@@ -140,6 +139,9 @@ const defaultPanels = [
       .iconfont {
         font-size: 60rpx;
         text-align: center;
+      }
+      text {
+        font-size: 24rpx;
       }
     }
   }

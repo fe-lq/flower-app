@@ -10,7 +10,8 @@ import { reactive } from 'vue';
 import NavBar from '@/components/NavBar.vue';
 import GoodsList from '@/components/GoodsList.vue';
 import NavItem from '@/components/NavItem.vue';
-import { Banner, Category, Advertisement, Goods } from '@/types/home';
+import { Banner, Category, Advertisement } from '@/types/home';
+import { Goods } from '@/types/goods';
 
 interface HomeData {
   bannerList: Banner[];
@@ -64,14 +65,14 @@ onShareTimeline(() => ({}));
 </script>
 
 <template>
-  <NavBar> 花事花艺 </NavBar>
+  <NavBar title="花事花艺" />
   <view class="container">
     <view class="home-bg" />
     <swiper
       class="swiper"
       circular
       autoplay
-      indicator-dots
+      indicatorDots
       :interval="3000"
       :duration="500"
     >
@@ -86,7 +87,7 @@ onShareTimeline(() => ({}));
 
     <view class="category-card">
       <view v-for="item in data.categories" :key="item.id" class="nav-item">
-        <NavItem :img-url="item.imageUrl" :title="item.name" />
+        <NavItem :imgUrl="item.imageUrl" :title="item.name" navUrl="" />
       </view>
     </view>
 

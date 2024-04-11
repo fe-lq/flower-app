@@ -38,12 +38,12 @@ const handleClick = (id: number) => {
 </script>
 
 <template>
-  <NavBar> 花品分类 </NavBar>
+  <NavBar title="花品分类" />
   <view
     class="category-container"
     :style="{ height: `calc(100vh - ${navBarHeight}px)` }"
   >
-    <scroll-view scroll-y class="category-left">
+    <scroll-view scrollY class="category-left">
       <view
         v-for="item in data"
         :id="item.id.toString()"
@@ -53,15 +53,16 @@ const handleClick = (id: number) => {
         >{{ item.name }}</view
       >
     </scroll-view>
-    <scroll-view scroll-y class="category-right">
+    <scroll-view scrollY class="category-right">
       <view class="nav-card">
-        <view
+        <NavItem
           v-for="item in rightList?.children"
           :key="item.id"
+          :imgUrl="item.imageUrl"
+          :title="item.name"
           class="nav-item"
-        >
-          <NavItem :img-url="item.imageUrl" :title="item.name" />
-        </view>
+          :navUrl="`/pages/goods/list/Index?category2Id=${item.id}`"
+        />
       </view>
     </scroll-view>
   </view>
@@ -110,11 +111,7 @@ const handleClick = (id: number) => {
 
   .nav-item {
     width: 33.33%;
-    &:deep(.nav-img) {
-      width: 90rpx;
-      height: 90rpx;
-    }
-    &:deep(.nav-text) {
+    :deep(.nav-text) {
       font-size: 26rpx;
     }
     &:nth-of-type(n + 4) {

@@ -24,19 +24,13 @@
   ],
   "subPackages": [
     {
-      "root": "sub-module/",
+      "root": "pages/goods",
       "pages": [
         {
-          "path": "home/Index"
+          "path": "detail/Index"
         },
         {
-          "path": "category/Index"
-        },
-        {
-          "path": "cart/Index"
-        },
-        {
-          "path": "mine/Index"
+          "path": "list/Index"
         }
       ]
     }

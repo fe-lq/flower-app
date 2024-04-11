@@ -44,7 +44,7 @@ const options = [
 </script>
 
 <template>
-  <NavBar> 购物车 </NavBar>
+  <NavBar title="购物车" />
 
   <uni-list :border="false">
     <uni-list-item v-for="item in dataList" :key="item.goodsId">

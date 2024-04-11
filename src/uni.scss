@@ -20,6 +20,11 @@ $uni-color-success: #4cd964;
 $uni-color-warning: #f0ad4e;
 $uni-color-error: #dd524d;
 
+/* 主题相关颜色 */
+$uni-color-primary: #f3514f;
+$uni-color-primary-hover: #f14340;
+$uni-color-price: #ee0a24;
+
 /* 文字基本颜色 */
 $uni-text-color: #333; // 基本色
 $uni-text-color-inverse: #fff; // 反色
@@ -29,7 +34,7 @@ $uni-text-color-disable: #c0c0c0;
 
 /* 背景颜色 */
 $uni-bg-color: #fff;
-$uni-bg-color-grey: #f8f8f8;
+$uni-bg-color-grey: #f7f4f8;
 $uni-bg-color-hover: #f1f1f1; // 点击状态颜色
 $uni-bg-color-mask: rgba(0, 0, 0, 0.4); // 遮罩颜色
 

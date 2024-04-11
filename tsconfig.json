@@ -15,10 +15,10 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["@dcloudio/types"],
+    "types": ["@dcloudio/types", "@uni-helper/uni-ui-types"],
     "baseUrl": "./"
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["node_modules"],
-  "types": ["vite/client", "@dcloudio/uni-ui"]
+  "types": ["vite/client"]
 }

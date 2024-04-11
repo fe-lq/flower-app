@@ -13,18 +13,17 @@ const http = new CreateRequest({
 
 // 请求拦截
 http.setRequestInterceptor((config) => {
-  console.log(config, '请求信息');
   return config;
 });
 
 // 响应拦截
 http.setResponseInterceptor(
   (res) => {
-    console.log(res, '响应信息');
     return res.data;
   },
   (err) => {
     console.log(err, '响应错误信息');
+    uni.showToast({ title: err.message ?? '接口失败', icon: 'error' });
     return Promise.reject(err);
   }
 );

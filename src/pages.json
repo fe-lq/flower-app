@@ -7,7 +7,10 @@
   },
   "pages": [
     {
-      "path": "pages/home/Index"
+      "path": "pages/home/Index",
+      "style": {
+        "enablePullDownRefresh": true
+      }
     },
     {
       "path": "pages/category/Index"
@@ -17,6 +20,25 @@
     },
     {
       "path": "pages/mine/Index"
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "sub-module/",
+      "pages": [
+        {
+          "path": "home/Index"
+        },
+        {
+          "path": "category/Index"
+        },
+        {
+          "path": "cart/Index"
+        },
+        {
+          "path": "mine/Index"
+        }
+      ]
     }
   ],
   "globalStyle": {

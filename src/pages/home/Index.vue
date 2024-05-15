@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Skeleton from './Skeleton.vue';
 import { onLoad, onShareAppMessage, onShareTimeline } from '@dcloudio/uni-app';
 import {
   getBanners,
@@ -6,8 +7,9 @@ import {
   getAdvertisement,
   getListGoods
 } from '@/api/home';
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import NavBar from '@/components/NavBar.vue';
+import SwiperCom from '@/components/SwiperCom.vue';
 import GoodsList from '@/components/GoodsList.vue';
 import NavItem from '@/components/NavItem.vue';
 import { Banner, Category, Advertisement } from '@/types/home';
@@ -26,8 +28,11 @@ const data = reactive<HomeData>({
   advertisement: [],
   goodsList: []
 });
+
+const loading = ref(true);
 const fetchBanners = async () => {
   try {
+    loading.value = true;
     const res = await Promise.all([
       getBanners(),
       getCategories(),
@@ -40,6 +45,8 @@ const fetchBanners = async () => {
     data.goodsList = res[3].data;
   } catch (error) {
     uni.showToast({ title: '获取数据失败', icon: 'error' });
+  } finally {
+    loading.value = false;
   }
 };
 onLoad(() => {
@@ -66,28 +73,14 @@ onShareTimeline(() => ({}));
 
 <template>
   <NavBar title="花事花艺" />
-  <view class="container">
+  <Skeleton v-if="loading" />
+  <view v-else class="container">
     <view class="home-bg" />
-    <swiper
-      class="swiper"
-      circular
-      autoplay
-      indicatorDots
-      :interval="3000"
-      :duration="500"
-    >
-      <swiper-item
-        v-for="item in data.bannerList"
-        :key="item.id"
-        class="swiper-item"
-      >
-        <image :src="item.imageUrl" style="width: 100%; height: 100%" />
-      </swiper-item>
-    </swiper>
+    <SwiperCom :data="data.bannerList" imgField="imageUrl" />
 
     <view class="category-card">
       <view v-for="item in data.categories" :key="item.id" class="nav-item">
-        <NavItem :imgUrl="item.imageUrl" :title="item.name" navUrl="" />
+        <NavItem :imgUrl="item.typeImg" :title="item.typeName" navUrl="" />
       </view>
     </view>
 
@@ -123,14 +116,6 @@ onShareTimeline(() => ({}));
   left: 0;
   right: 0;
   background: linear-gradient(#f3514f 70%, $uni-bg-color-grey);
-}
-.swiper {
-  height: 320rpx;
-  overflow: hidden;
-  border-radius: 18rpx;
-}
-.swiper-item {
-  border-radius: 18rpx;
 }
 
 .category-card {

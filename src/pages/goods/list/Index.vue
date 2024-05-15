@@ -4,18 +4,18 @@ import GoodsList from '@/components/GoodsList.vue';
 import NavBar from '@/components/NavBar.vue';
 import { onLoad } from '@dcloudio/uni-app';
 import { ref } from 'vue';
-import type { Goods } from '@/types/goods';
+import type { Goods, GoodsRequest } from '@/types/goods';
 
 const goodsList = ref<Goods[]>([]);
 
-const fetchGoodsList = async (params: any) => {
-  const { data } = await getGoodsList({ page: 1, pageSize: 10, ...params });
+const fetchGoodsList = async (params: GoodsRequest) => {
+  const { data } = await getGoodsList({ ...params, page: 1, pageSize: 10 });
   goodsList.value = data.records;
 };
 
 onLoad((query) => {
   // query 就是路由传参
-  fetchGoodsList(query);
+  fetchGoodsList({ goodsTypeId: Number(query?.id) });
 });
 </script>
 

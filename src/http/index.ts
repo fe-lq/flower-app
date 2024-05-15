@@ -8,7 +8,9 @@ export type DataType<T> = {
 };
 
 const http = new CreateRequest({
-  baseURL: 'https://gmall-prod.atguigu.cn/mall-api'
+  // 后面统一路径之后再绑定且使用环境变量
+  // baseURL: 'https://gmall-prod.atguigu.cn/mall-api'
+  baseURL: ''
 });
 
 // 请求拦截

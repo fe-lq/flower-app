@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Goods } from '@/types/goods';
-import { defineProps, reactive } from 'vue';
+import { reactive } from 'vue';
 import PriceItem from './PriceItem.vue';
 interface Props {
   goods: Goods;
@@ -12,17 +12,17 @@ const item = reactive(props.goods);
 </script>
 <template>
   <view class="goods-card">
-    <navigator url="/pages/goods/detail/Index">
-      <image class="goods-img" :src="item.imageUrl" mode="widthFix" />
+    <navigator :url="`/pages/goods/detail/Index?id=${item.id}`">
+      <image class="goods-img" :src="item.goodsImgs[0]" mode="widthFix" />
       <view class="item-info">
-        <view class="info-name">{{ item.name }}</view>
-        <view class="info-desc">{{ item.floralLanguage }}</view>
+        <view class="info-name">{{ item.goodsName }}</view>
+        <view class="info-desc">{{ item.goodsDesc }}</view>
       </view>
     </navigator>
     <view class="goods-footer">
       <view class="footer-left">
-        <PriceItem :price="item.price" />
-        <PriceItem :price="item.marketPrice" type="grey" :size="24" />
+        <PriceItem :price="item.goodsPrice" />
+        <PriceItem :price="item.goodsMarkPrice" type="grey" :size="24" />
       </view>
       <view class="footer-fight">
         <image class="goods-cart" src="/static/images/buybtn.png" mode="" />

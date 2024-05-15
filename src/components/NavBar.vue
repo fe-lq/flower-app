@@ -9,7 +9,7 @@ export default {
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
 import { useStore } from '@/store';
-import { toRefs, defineProps } from 'vue';
+import { toRefs } from 'vue';
 
 interface Props {
   /** 导航栏的标题 */

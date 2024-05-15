@@ -19,6 +19,7 @@ const { navBarHeight } = storeToRefs(store);
 const rightList = computed(() =>
   data.value.find((item) => item.id === activeId.value)
 );
+
 const fetchCategoryList = async () => {
   try {
     const res = await getCategoryList();
@@ -50,7 +51,7 @@ const handleClick = (id: number) => {
         :key="item.id"
         :class="['side-item', activeId === item.id ? 'active-item' : '']"
         @click="() => handleClick(item.id)"
-        >{{ item.name }}</view
+        >{{ item.typeName }}</view
       >
     </scroll-view>
     <scroll-view scrollY class="category-right">
@@ -58,11 +59,14 @@ const handleClick = (id: number) => {
         <NavItem
           v-for="item in rightList?.children"
           :key="item.id"
-          :imgUrl="item.imageUrl"
-          :title="item.name"
+          :imgUrl="item.typeImg"
+          :title="item.typeName"
           class="nav-item"
-          :navUrl="`/pages/goods/list/Index?category2Id=${item.id}`"
+          :navUrl="`/pages/goods/list/Index?id=${item.id}`"
         />
+      </view>
+      <view v-show="!rightList?.children.length" class="empty">
+        暂无分类数据
       </view>
     </scroll-view>
   </view>
@@ -104,6 +108,11 @@ const handleClick = (id: number) => {
 
 .category-right {
   padding: 20rpx 0;
+
+  .empty {
+    text-align: center;
+    color: $uni-text-color-grey;
+  }
 }
 .nav-card {
   display: flex;

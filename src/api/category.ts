@@ -2,5 +2,5 @@ import { httpGet } from '@/http';
 import { CategoryData } from '@/types/category';
 
 export const getCategoryList = httpGet<CategoryData[]>(
-  '/index/findCategoryTree'
+  'http://127.0.0.1:8890/category/list'
 );

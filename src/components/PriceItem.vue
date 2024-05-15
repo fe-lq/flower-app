@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toRefs, defineProps, withDefaults } from 'vue';
+import { toRefs, withDefaults } from 'vue';
 
 interface Props {
   /** 价格 */
@@ -7,18 +7,18 @@ interface Props {
   /** 价格大小 单位rpx */
   size?: string | number;
   /** 颜色类型 */
-  type?: 'primary' | 'grey';
+  type?: 'red' | 'grey';
 }
 const props = withDefaults(defineProps<Props>(), {
   size: 30,
-  type: 'primary'
+  type: 'red'
 });
 const { price, type } = toRefs<Props>(props);
 </script>
 
 <template>
   <view
-    :class="['price-item', type === 'primary' ? 'red' : 'grey']"
+    :class="['price-item', type]"
     :style="[{ fontSize: typeof size == 'number' ? `${size}rpx` : size }]"
   >
     <text class="symbol">¥</text>

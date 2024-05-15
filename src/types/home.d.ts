@@ -11,8 +11,9 @@ export interface Banner {
 
 export interface Category {
   id: number;
-  imageUrl: string;
-  name: string;
+  typeName: string;
+  typeImg: string;
+  typeEnable?: boolean;
 }
 
 export interface Advertisement {

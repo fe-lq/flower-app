@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { userLogin } from '@/api/user';
 const defaultPanels = [
   {
     url: '/modules/orderPayModule/pages/order/list/list',
@@ -16,6 +17,31 @@ const defaultPanels = [
     icon: 'icon-tuikuan'
   }
 ];
+
+const handleLogin = () => {
+  uni.login({
+    provider: 'weixin', //使用微信登录
+    success: async (loginRes) => {
+      await userLogin(loginRes);
+
+      console.log(loginRes, '成功');
+    },
+    fail(err) {
+      console.log(err, '失败');
+    }
+  });
+};
+
+const checkLogin = () => {
+  uni.checkSession({
+    success: async () => {
+      console.log('登录状态有效');
+    },
+    fail: async () => {
+      console.log('登录状态已过期');
+    }
+  });
+};
 </script>
 
 <template>
@@ -29,7 +55,8 @@ const defaultPanels = [
         <image src="@/static/avatar.png" />
         <view class="user-info">
           <view>未登录</view>
-          <view class="info-tip">点击授权登录</view>
+          <view class="info-tip" @click="handleLogin">点击授权登录</view>
+          <view @click="checkLogin">校验登录</view>
         </view>
       </view>
     </view>

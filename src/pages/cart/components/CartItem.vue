@@ -6,7 +6,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { defineProps, toRefs, defineEmits } from 'vue';
+import { toRefs } from 'vue';
 import PriceItem from '@/components/PriceItem.vue';
 
 interface Props {

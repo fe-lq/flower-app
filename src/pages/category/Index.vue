@@ -3,14 +3,13 @@ import NavBar from '@/components/NavBar.vue';
 import NavItem from '@/components/NavItem.vue';
 import { onLoad } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
-import { CategoryData } from '@/types/category';
-import { getCategoryList } from '@/api/category';
+import { CategoryList, Category } from '@/api/category';
 import { useStore } from '@/store';
 import { storeToRefs } from 'pinia';
 /**
  * 拓展，滑动数据可自动加载下一个菜单内容，且左侧自动跳转
  */
-const data = ref<CategoryData[]>([]);
+const data = ref<Category[]>([]);
 const activeId = ref<number>();
 
 const store = useStore();
@@ -22,7 +21,7 @@ const rightList = computed(() =>
 
 const fetchCategoryList = async () => {
   try {
-    const res = await getCategoryList();
+    const res = await CategoryList.request();
     data.value = res.data;
     activeId.value = res.data[0].id;
   } catch (error) {
@@ -65,7 +64,7 @@ const handleClick = (id: number) => {
           :navUrl="`/pages/goods/list/Index?id=${item.id}`"
         />
       </view>
-      <view v-show="!rightList?.children.length" class="empty">
+      <view v-show="!rightList?.children?.length" class="empty">
         暂无分类数据
       </view>
     </scroll-view>

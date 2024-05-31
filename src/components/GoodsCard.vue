@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Goods } from '@/types/goods';
+import { GoodsListType } from '@/types/goods';
 import { reactive } from 'vue';
 import PriceItem from './PriceItem.vue';
 interface Props {
-  goods: Goods;
+  goods: GoodsListType[number];
 }
 
 const props = defineProps<Props>();

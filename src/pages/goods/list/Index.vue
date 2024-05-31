@@ -1,21 +1,30 @@
 <script setup lang="ts">
-import { getGoodsList } from '@/api/goods';
+import { GoodsList as GoodsListRequest, Goods } from '@/api/goods';
 import GoodsList from '@/components/GoodsList.vue';
 import NavBar from '@/components/NavBar.vue';
 import { onLoad } from '@dcloudio/uni-app';
 import { ref } from 'vue';
-import type { Goods, GoodsRequest } from '@/types/goods';
 
 const goodsList = ref<Goods[]>([]);
 
-const fetchGoodsList = async (params: GoodsRequest) => {
-  const { data } = await getGoodsList({ ...params, page: 1, pageSize: 10 });
+const fetchGoodsList = async (params: GoodsListRequest.Request) => {
+  const { data } = await GoodsListRequest.request({
+    ...params,
+    page: 1,
+    pageSize: 10
+  });
   goodsList.value = data.records;
 };
 
 onLoad((query) => {
   // query 就是路由传参
-  fetchGoodsList({ goodsTypeId: Number(query?.id) });
+  if (query?.id) {
+    /**
+     * TODO page 跳转
+     *
+     */
+    fetchGoodsList({ goodsTypeId: Number(query.id), page: 1, pageSize: 10 });
+  }
 });
 </script>
 

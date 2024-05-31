@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { getGoodsDetail } from '@/api/goods';
+import { Goods, GoodsDetail } from '@/api/goods';
 import ActionFooter from './components/ActionFooter.vue';
 import NavBar from '@/components/NavBar.vue';
 import SwiperCom from '@/components/SwiperCom.vue';
 import PriceItem from '@/components/PriceItem.vue';
 import { onLoad } from '@dcloudio/uni-app';
 import { ref } from 'vue';
-import { Goods } from '@/types/goods';
 
 const swiperData = ref<Goods>();
 
 const fetchGoodsDetail = async (params: { id: number }) => {
-  const { data } = await getGoodsDetail({ ...params });
-  console.log(data);
+  const { data } = await GoodsDetail.request(params);
   swiperData.value = data;
 };
 

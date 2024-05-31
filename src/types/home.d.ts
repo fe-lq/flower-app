@@ -9,13 +9,6 @@ export interface Banner {
   updateTime: string;
 }
 
-export interface Category {
-  id: number;
-  typeName: string;
-  typeImg: string;
-  typeEnable?: boolean;
-}
-
 export interface Advertisement {
   category2Id: number;
   id: number;

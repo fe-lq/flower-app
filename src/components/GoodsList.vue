@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Goods } from '@/types/goods';
+import { GoodsListType } from '@/types/goods';
 import GoodsCard from './GoodsCard.vue';
 import { toRefs } from 'vue';
 
 interface Props {
-  data: Goods[];
+  data: GoodsListType;
   title?: string;
 }
 

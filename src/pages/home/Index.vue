@@ -2,24 +2,24 @@
 import Skeleton from './Skeleton.vue';
 import { onLoad, onShareAppMessage, onShareTimeline } from '@dcloudio/uni-app';
 import {
-  getBanners,
-  getCategories,
-  getAdvertisement,
-  getListGoods
+  HomeFindBanner,
+  HomeAdvertisement,
+  HomeFindListGoods,
+  HomeGetCategoryLevel1
 } from '@/api/home';
 import { reactive, ref } from 'vue';
 import NavBar from '@/components/NavBar.vue';
 import SwiperCom from '@/components/SwiperCom.vue';
 import GoodsList from '@/components/GoodsList.vue';
 import NavItem from '@/components/NavItem.vue';
-import { Banner, Category, Advertisement } from '@/types/home';
-import { Goods } from '@/types/goods';
+import { Banner, Advertisement } from '@/types/home';
+import { GoodsListType } from '@/types/goods';
 
 interface HomeData {
   bannerList: Banner[];
-  categories: Category[];
+  categories: HomeGetCategoryLevel1.Response;
   advertisement: Advertisement[];
-  goodsList: Goods[];
+  goodsList: GoodsListType;
 }
 // const active = ref(0);
 const data = reactive<HomeData>({
@@ -34,10 +34,10 @@ const fetchBanners = async () => {
   try {
     loading.value = true;
     const res = await Promise.all([
-      getBanners(),
-      getCategories(),
-      getAdvertisement(),
-      getListGoods()
+      HomeFindBanner.request(),
+      HomeGetCategoryLevel1.request(),
+      HomeAdvertisement.request(),
+      HomeFindListGoods.request()
     ]);
     data.bannerList = res[0].data;
     data.categories = res[1].data;

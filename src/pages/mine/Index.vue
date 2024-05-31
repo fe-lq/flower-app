@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { userLogin } from '@/api/user';
+import { UserLogin } from '@/api/user';
 const defaultPanels = [
   {
     url: '/modules/orderPayModule/pages/order/list/list',
@@ -22,7 +22,10 @@ const handleLogin = () => {
   uni.login({
     provider: 'weixin', //使用微信登录
     success: async (loginRes) => {
-      await userLogin(loginRes);
+      await UserLogin.request({
+        code: loginRes.code,
+        userPhone: ''
+      });
 
       console.log(loginRes, '成功');
     },
